@@ -1,0 +1,10 @@
+{
+  "name": "JVS EXPRESS",
+  "short_name": "JVS EXPRESS",
+  "description": "Plataforma de entregas e central de oportunidades",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#070b12",
+  "theme_color": "#07111f",
+  "icons": []
+}

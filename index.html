@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="JVS EXPRESS — entregas, motoristas e oportunidades.">
+<link rel="manifest" href="manifest.webmanifest">
+<title>JVS EXPRESS</title>
+<style>
+:root{--bg:#070b12;--panel:#101a29;--panel2:#15243a;--blue:#168cff;--cyan:#52c8ff;--silver:#d7e0ea;--muted:#9aabba;--line:#26384d;--good:#36c98b;--warn:#ffc45c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#102d50 0,transparent 35%),var(--bg);color:#f4f7fb;font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:22px 18px 16px;border-bottom:1px solid var(--line);background:#07111feF;position:sticky;top:0;z-index:3}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border:1px solid #8ebce8;border-radius:13px;display:grid;place-items:center;font-weight:900;font-size:17px;color:#dcecff;background:linear-gradient(145deg,#1b293b,#05080d);box-shadow:0 0 18px #168cff44}.brand h1{font-size:20px;margin:0;letter-spacing:1.5px}.brand small{color:var(--cyan);letter-spacing:2px}
+main{max-width:900px;margin:auto;padding:18px 14px 100px}.hero{padding:20px;border:1px solid #24517a;border-radius:18px;background:linear-gradient(135deg,#102b49,#101a29 70%);margin-bottom:16px}.hero h2{margin:0 0 8px;font-size:22px}.hero p{color:#c4d3e3;margin:0;line-height:1.5}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.tab{border:1px solid var(--line);background:var(--panel);color:#cbd8e6;padding:11px 7px;border-radius:12px;font-weight:700}.tab.active{background:#123d68;border-color:var(--blue);color:white}
+.card{background:linear-gradient(180deg,var(--panel),#0c1420);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}.card h3{margin:0 0 12px;font-size:17px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field{display:flex;flex-direction:column;gap:6px;margin:9px 0}.field.full{grid-column:1/-1}label{font-size:12px;color:#b7c7d8}input,select,textarea{width:100%;background:#08111d;color:white;border:1px solid #31465e;border-radius:10px;padding:12px;font:inherit;min-width:0}textarea{min-height:75px;resize:vertical}.btn{border:0;border-radius:11px;padding:12px 15px;background:linear-gradient(90deg,#0878df,#16a5ff);color:white;font-weight:800;font-size:14px;width:100%;margin-top:8px}.btn.secondary{background:#1a2b40;border:1px solid #3a5675}.btn.danger{background:#673044}.muted{color:var(--muted);font-size:13px;line-height:1.45}.item{padding:13px;border:1px solid var(--line);border-radius:12px;margin:9px 0;background:#0a1421}.item strong{display:block;margin-bottom:5px}.tag{display:inline-block;padding:4px 8px;border-radius:20px;background:#123b5f;color:#9bd7ff;font-size:11px;margin:3px 4px 3px 0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:12px;background:#0a1523;border:1px solid var(--line);border-radius:12px}.stat b{display:block;font-size:18px}.stat small{color:var(--muted)}.notice{border-left:3px solid var(--warn);padding:10px 12px;background:#211b10;color:#e9d6ad;border-radius:7px;font-size:12px;line-height:1.5}.hidden{display:none!important}footer{text-align:center;color:#71859a;font-size:11px;padding:25px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.hero h2{font-size:20px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">JVS</div><div><h1>JVS EXPRESS</h1><small>ENTREGAS • CONEXÕES • RESULTADOS</small></div></div></header>
+<main>
+<section class="hero"><h2>Seu centro de operações de entregas</h2><p>Solicite entregas, organize motoristas e acompanhe oportunidades em diferentes plataformas — em um só lugar.</p></section>
+<div class="tabs">
+<button class="tab active" data-tab="cliente">Cliente</button>
+<button class="tab" data-tab="operacao">Operação</button>
+<button class="tab" data-tab="central">Oportunidades</button>
+</div>
+
+<section id="cliente">
+<div class="card"><h3>Solicitar uma entrega</h3>
+<div class="grid">
+<div class="field"><label>Nome / empresa</label><input id="cNome" placeholder="Seu nome"></div>
+<div class="field"><label>WhatsApp</label><input id="cFone" placeholder="(92) 99999-9999"></div>
+<div class="field full"><label>Endereço de coleta</label><input id="cOrigem" placeholder="Rua, número, bairro"></div>
+<div class="field full"><label>Endereço de entrega</label><input id="cDestino" placeholder="Rua, número, bairro"></div>
+<div class="field"><label>Tipo de mercadoria</label><select id="cTipo"><option>Pequeno volume</option><option>Pacote / caixa</option><option>Peças automotivas</option><option>Mercadoria comercial</option><option>Outro (descrever)</option></select></div>
+<div class="field"><label>Quando?</label><select id="cQuando"><option>O mais breve possível</option><option>Agendar</option></select></div>
+<div class="field full"><label>Detalhes / observações</label><textarea id="cObs" placeholder="Quantidade, tamanho, horário ou outras informações"></textarea></div>
+</div>
+<button class="btn" onclick="solicitar()">Enviar solicitação</button>
+<p class="muted">A solicitação fica registrada neste dispositivo nesta versão demonstrativa. A confirmação do preço e da disponibilidade será feita pela operação.</p>
+</div>
+</section>
+
+<section id="operacao" class="hidden">
+<div class="card"><h3>Painel da operação</h3><div class="stats" id="resumo"></div></div>
+<div class="card"><h3>Cadastrar motorista</h3><div class="grid">
+<div class="field"><label>Nome</label><input id="mNome" placeholder="Nome do motorista"></div>
+<div class="field"><label>WhatsApp</label><input id="mFone" placeholder="Contato"></div>
+<div class="field"><label>Veículo</label><input id="mVeiculo" placeholder="Ex.: Onix 1.0"></div>
+<div class="field"><label>Placa</label><input id="mPlaca" placeholder="ABC1D23"></div>
+</div><button class="btn secondary" onclick="cadastrarMotorista()">Salvar motorista</button><div id="motoristas"></div></div>
+<div class="card"><h3>Solicitações recebidas</h3><div id="pedidos"></div></div>
+</section>
+
+<section id="central" class="hidden">
+<div class="card"><h3>Registrar oportunidade externa</h3><div class="grid">
+<div class="field"><label>Plataforma</label><select id="oPlataforma"><option>Eu Entrego</option><option>Mercado Livre / Envios Extra</option><option>Shopee / SPX</option><option>Outra</option></select></div>
+<div class="field"><label>Identificação da rota</label><input id="oRota" placeholder="Nome ou código"></div>
+<div class="field"><label>Valor oferecido (R$)</label><input id="oValor" type="number" min="0" step=".01" placeholder="0,00"></div>
+<div class="field"><label>Distância total (km)</label><input id="oKm" type="number" min="0" step=".1" placeholder="0"></div>
+<div class="field"><label>Tempo estimado (horas)</label><input id="oTempo" type="number" min="0" step=".1" placeholder="0"></div>
+<div class="field"><label>Combustível / despesas (R$)</label><input id="oCusto" type="number" min="0" step=".01" placeholder="0,00"></div>
+</div><button class="btn" onclick="registrarOportunidade()">Registrar oportunidade</button>
+<p class="muted">Os dados são lançados manualmente pelo entregador. O aplicativo não acessa nem captura ofertas de outras plataformas.</p></div>
+<div class="card"><h3>Resultado das oportunidades</h3><div class="stats" id="oResumo"></div><div id="oportunidades"></div></div>
+</section>
+<div class="notice">VERSÃO MVP / TESTE: os registros ficam salvos apenas no armazenamento deste navegador e aparelho. Para operação real com vários clientes e motoristas, será necessário conectar um banco de dados e autenticação online. Não compartilhe dados pessoais nesta demonstração.</div>
+<footer>JVS EXPRESS • Manaus – AM<br>Conectando você ao seu destino.</footer>
+</main>
+<script>
+const get=(k)=>JSON.parse(localStorage.getItem(k)||"[]");
+const put=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+function money(v){return Number(v||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));['cliente','operacao','central'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==b.dataset.tab));render()}));
+function solicitar(){let p={id:Date.now(),nome:cNome.value.trim(),fone:cFone.value.trim(),origem:cOrigem.value.trim(),destino:cDestino.value.trim(),tipo:cTipo.value,quando:cQuando.value,obs:cObs.value.trim(),status:'Aguardando análise',data:new Date().toLocaleString('pt-BR')};if(!p.nome||!p.origem||!p.destino){alert('Preencha nome, coleta e entrega.');return}let a=get('jvs_pedidos');a.unshift(p);put('jvs_pedidos',a);alert('Solicitação registrada nesta demonstração.');['cNome','cFone','cOrigem','cDestino','cObs'].forEach(id=>document.getElementById(id).value='');}
+function cadastrarMotorista(){let m={nome:mNome.value.trim(),fone:mFone.value.trim(),veiculo:mVeiculo.value.trim(),placa:mPlaca.value.trim()};if(!m.nome){alert('Informe o nome.');return}let a=get('jvs_motoristas');a.push(m);put('jvs_motoristas',a);['mNome','mFone','mVeiculo','mPlaca'].forEach(id=>document.getElementById(id).value='');render()}
+function statusPedido(id,s){let a=get('jvs_pedidos');a=a.map(p=>p.id===id?{...p,status:s}:p);put('jvs_pedidos',a);render()}
+function registrarOportunidade(){let o={plataforma:oPlataforma.value,rota:oRota.value.trim(),valor:+oValor.value,km:+oKm.value,tempo:+oTempo.value,custo:+oCusto.value,data:new Date().toLocaleString('pt-BR')};if(!o.valor||!o.km){alert('Informe ao menos valor e distância.');return}let a=get('jvs_oportunidades');a.unshift(o);put('jvs_oportunidades',a);['oRota','oValor','oKm','oTempo','oCusto'].forEach(id=>document.getElementById(id).value='');render()}
+function render(){let ps=get('jvs_pedidos'),ms=get('jvs_motoristas'),os=get('jvs_oportunidades');resumo.innerHTML=`<div class="stat"><b>${ps.length}</b><small>Solicitações</small></div><div class="stat"><b>${ms.length}</b><small>Motoristas</small></div><div class="stat"><b>${ps.filter(p=>p.status==='Concluída').length}</b><small>Concluídas</small></div>`;
+motoristas.innerHTML=ms.length?ms.map(m=>`<div class="item"><strong>${esc(m.nome)}</strong><span class="muted">${esc(m.veiculo)} • ${esc(m.placa)} • ${esc(m.fone)}</span></div>`).join(''):'<p class="muted">Nenhum motorista cadastrado.</p>';
+pedidos.innerHTML=ps.length?ps.map(p=>`<div class="item"><strong>${esc(p.nome)} <span class="tag">${esc(p.status)}</span></strong><div class="muted">${esc(p.origem)} → ${esc(p.destino)}<br>${esc(p.tipo)} • ${esc(p.quando)}<br>${esc(p.fone)} • ${esc(p.data)}<br>${esc(p.obs)}</div><select onchange="statusPedido(${p.id},this.value)"><option ${p.status==='Aguardando análise'?'selected':''}>Aguardando análise</option><option ${p.status==='Orçamento enviado'?'selected':''}>Orçamento enviado</option><option ${p.status==='Motorista definido'?'selected':''}>Motorista definido</option><option ${p.status==='Em andamento'?'selected':''}>Em andamento</option><option ${p.status==='Concluída'?'selected':''}>Concluída</option><option ${p.status==='Cancelada'?'selected':''}>Cancelada</option></select></div>`).join(''):'<p class="muted">Nenhuma solicitação recebida.</p>';
+let total=os.reduce((s,o)=>s+o.valor,0),cost=os.reduce((s,o)=>s+o.custo,0),km=os.reduce((s,o)=>s+o.km,0);oResumo.innerHTML=`<div class="stat"><b>${money(total)}</b><small>Receita registrada</small></div><div class="stat"><b>${money(total-cost)}</b><small>Saldo após despesas</small></div><div class="stat"><b>${km.toLocaleString('pt-BR')} km</b><small>Distância registrada</small></div>`;
+oportunidades.innerHTML=os.length?os.map(o=>`<div class="item"><strong>${esc(o.plataforma)} — ${esc(o.rota||'Rota sem nome')}</strong><span class="tag">${money(o.valor)}</span><span class="tag">${o.km} km</span><span class="tag">Saldo ${money(o.valor-o.custo)}</span><div class="muted">Tempo: ${o.tempo||'—'} h • Despesas: ${money(o.custo)} • ${esc(o.data)}</div></div>`).join(''):'<p class="muted">Nenhuma oportunidade registrada.</p>'}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+render();
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>
